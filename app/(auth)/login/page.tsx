@@ -141,7 +141,7 @@ export default function LoginPage() {
         type="button"
         variant="outline"
         onClick={handleGoogleLogin}
-        className="w-full border-slate-800 bg-transparent text-white hover:bg-slate-900"
+        className="w-full bg-white text-slate-900 border border-slate-300 hover:bg-slate-50"
         disabled={loading || oauthLoading}
       >
         <svg className="mr-2 h-4 w-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512">

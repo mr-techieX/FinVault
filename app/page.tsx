@@ -48,14 +48,14 @@ export default async function Home() {
       {/* Hero section */}
       <main className="relative z-10 flex-1 flex flex-col justify-center max-w-5xl mx-auto px-6 py-12 text-center">
         <div className="space-y-6">
-          <span className="inline-flex items-center rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-400 border border-indigo-500/20">
+          <span className="inline-flex items-center rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
             Automated Net Worth Tracking
           </span>
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-400">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-800 to-slate-500 dark:from-white dark:via-slate-100 dark:to-slate-400">
             Complete Wealth Intelligence <br className="hidden sm:inline" />
             In One Secure Vault
           </h1>
-          <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-400 leading-relaxed">
+          <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
             Monitor real-time net worth fluctuations, dynamic loan amortization, CAGR/XIRR growth, category budget limits, and financial goals. Completely manual logging with zero account linkage.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
