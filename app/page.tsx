@@ -22,9 +22,9 @@ export default async function Home() {
         <div className="flex items-center space-x-4">
           {session?.user ? (
             <>
-              <Link href="/dashboard" className="text-sm font-semibold text-slate-400 hover:text-white transition-colors">
+              {/* <Link href="/dashboard" className="text-sm font-semibold text-slate-400 hover:text-white transition-colors">
                 Dashboard
-              </Link>
+              </Link> */}
               <Link href="/settings" className="text-sm font-semibold text-slate-400 hover:text-white transition-colors">
                 Settings
               </Link>
