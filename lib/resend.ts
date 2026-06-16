@@ -126,28 +126,28 @@ export async function sendRepaymentReminderEmail(
   return resend.emails.send({
     from: FROM,
     to: email,
-    subject: \`Upcoming EMI Reminder: \${loanName}\`,
-    html: \`
+    subject: `Upcoming EMI Reminder: ${loanName}`,
+    html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0f172a; color: #e2e8f0; padding: 40px; border-radius: 12px;">
         <h1 style="color: #6366f1; font-size: 28px; margin-bottom: 8px;">FinVault</h1>
         <p style="color: #94a3b8; margin-bottom: 32px;">Personal Finance & Net Worth Platform</p>
         
         <h2 style="font-size: 20px; margin-bottom: 16px;">EMI Reminder 🔔</h2>
         <p style="color: #cbd5e1; line-height: 1.6; margin-bottom: 24px;">
-          Hi \${name}, this is a gentle reminder that you have an upcoming EMI payment in the next 5 days.
+          Hi ${name}, this is a gentle reminder that you have an upcoming EMI payment in the next 5 days.
         </p>
         
         <div style="background: #1e293b; border-radius: 8px; padding: 24px; margin-bottom: 24px;">
-          <p style="margin: 8px 0; color: #cbd5e1;"><strong>Loan:</strong> \${loanName}</p>
-          <p style="margin: 8px 0; color: #cbd5e1;"><strong>Amount Due:</strong> \${amount}</p>
-          <p style="margin: 8px 0; color: #cbd5e1;"><strong>Due Date:</strong> \${dueDate}</p>
+          <p style="margin: 8px 0; color: #cbd5e1;"><strong>Loan:</strong> ${loanName}</p>
+          <p style="margin: 8px 0; color: #cbd5e1;"><strong>Amount Due:</strong> ${amount}</p>
+          <p style="margin: 8px 0; color: #cbd5e1;"><strong>Due Date:</strong> ${dueDate}</p>
         </div>
         
-        <a href="\${BASE_URL}/dashboard" 
+        <a href="${BASE_URL}/dashboard" 
            style="display: inline-block; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 16px;">
           View Dashboard
         </a>
       </div>
-    \`,
+    `,
   });
 }
