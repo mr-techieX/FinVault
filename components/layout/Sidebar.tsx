@@ -52,7 +52,7 @@ export default function Sidebar() {
       {/* Brand Header */}
       <div className="flex h-16 items-center px-6 border-b border-border">
         <Link href="/" className="flex items-center space-x-2">
-          <Image src="/logo.png" alt="FinVault" width={32} height={32} className="rounded-lg" />
+          <Image src="/logo.svg" alt="FinVault" width={32} height={32} className="rounded-lg" />
           <span className="text-lg font-bold text-foreground font-orbitron tracking-wide">FinVault</span>
         </Link>
       </div>
