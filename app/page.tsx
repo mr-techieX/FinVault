@@ -16,7 +16,7 @@ export default async function Home() {
       {/* Header bar */}
       <header className="relative z-10 mx-auto max-w-7xl w-full px-6 py-6 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <Image src="/logo.png" alt="FinVault" width={36} height={36} className="rounded-lg" />
+          <Image src="/logo.svg" alt="FinVault" width={36} height={36} className="rounded-lg" />
           <span className="text-lg font-bold text-white font-orbitron tracking-wide">FinVault</span>
         </Link>
         <div className="flex items-center space-x-4">
