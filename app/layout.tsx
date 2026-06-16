@@ -52,7 +52,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={`${poppins.variable} ${orbitron.variable}`} suppressHydrationWarning>
-      <body className="min-h-screen bg-background font-poppins antialiased">
+      <body className="min-h-screen bg-gradient-to-br from-indigo-50/40 via-background to-purple-50/40 dark:from-indigo-950/30 dark:via-background dark:to-emerald-950/20 font-poppins antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

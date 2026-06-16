@@ -15,9 +15,11 @@ export default async function Home() {
 
       {/* Header bar */}
       <header className="relative z-10 mx-auto max-w-7xl w-full px-6 py-6 flex items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
-          <Image src="/logo.svg" alt="FinVault" width={36} height={36} className="rounded-lg" />
-          <span className="text-lg font-bold text-slate-900 dark:text-white font-orbitron tracking-wide">FinVault</span>
+        <Link href="/" className="flex items-center space-x-2 group">
+          <div className="overflow-hidden rounded-lg transition-transform group-hover:scale-105 shadow-md shadow-indigo-500/20">
+            <Image src="/logo.svg" alt="FinVault" width={36} height={36} />
+          </div>
+          <span className="text-lg font-bold text-slate-900 dark:text-white font-orbitron tracking-wide group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">FinVault</span>
         </Link>
         <div className="flex items-center space-x-4">
           {session?.user ? (

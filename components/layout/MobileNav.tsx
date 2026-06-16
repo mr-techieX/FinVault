@@ -50,9 +50,11 @@ export default function MobileNav() {
     <div className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
       {/* Brand Header */}
       <div className="flex h-16 items-center px-6 border-b border-border">
-        <Link href="/" className="flex items-center space-x-2">
-          <Image src="/logo.svg" alt="FinVault" width={32} height={32} className="rounded-lg" />
-          <span className="text-lg font-bold text-foreground font-orbitron tracking-wide">FinVault</span>
+        <Link href="/" className="flex items-center space-x-2 group">
+          <div className="overflow-hidden rounded-lg transition-transform group-hover:scale-105 shadow-md shadow-indigo-500/20">
+            <Image src="/logo.svg" alt="FinVault" width={32} height={32} />
+          </div>
+          <span className="text-lg font-bold text-foreground font-orbitron tracking-wide group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">FinVault</span>
         </Link>
       </div>
 

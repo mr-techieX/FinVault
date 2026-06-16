@@ -426,6 +426,7 @@ model LoanPayment {
   balanceAfter   Decimal  @db.Decimal(15, 2)
   isPaid         Boolean  @default(false)
   paidDate       DateTime?
+  reminderSent   Boolean  @default(false)
   notes          String?
   createdAt      DateTime @default(now())
 
