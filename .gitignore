@@ -45,3 +45,6 @@ creds.md
 
 # prisma
 prisma/migrations/
+
+# scratch directory for temporary scripts
+scratch/
