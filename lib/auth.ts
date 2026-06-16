@@ -81,15 +81,20 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async signIn({ user, account }) {
       // Allow OAuth without email verification
       if (account?.provider !== "credentials") {
-        // Create profile if first OAuth login
+        // Create profile if first OAuth login and user already exists in DB
         if (user.id) {
-          const profile = await db.userProfile.findUnique({
-            where: { userId: user.id },
+          const dbUser = await db.user.findUnique({
+            where: { id: user.id },
           });
-          if (!profile) {
-            await db.userProfile.create({
-              data: { userId: user.id },
+          if (dbUser) {
+            const profile = await db.userProfile.findUnique({
+              where: { userId: user.id },
             });
+            if (!profile) {
+              await db.userProfile.create({
+                data: { userId: user.id },
+              });
+            }
           }
         }
         return true;
