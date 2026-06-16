@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import {
@@ -49,12 +50,10 @@ export default function MobileNav() {
     <div className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
       {/* Brand Header */}
       <div className="flex h-16 items-center px-6 border-b border-border">
-        <div className="flex items-center space-x-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-indigo-500 to-emerald-500 p-1">
-            <span className="text-sm font-bold text-white">FV</span>
-          </div>
+        <Link href="/" className="flex items-center space-x-2">
+          <Image src="/logo.png" alt="FinVault" width={32} height={32} className="rounded-lg" />
           <span className="text-lg font-bold text-foreground font-orbitron tracking-wide">FinVault</span>
-        </div>
+        </Link>
       </div>
 
       {/* Nav links */}
@@ -97,7 +96,7 @@ export default function MobileNav() {
             </div>
           </div>
           <button
-            onClick={() => signOut({ callbackUrl: "/login" })}
+            onClick={() => signOut({ callbackUrl: "/" })}
             className="rounded p-1 hover:bg-slate-800 hover:text-rose-400 transition-colors"
           >
             <LogOut className="h-4 w-4" />

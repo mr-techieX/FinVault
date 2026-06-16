@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import {
@@ -50,10 +51,8 @@ export default function Sidebar() {
     <aside className="hidden h-screen w-64 flex-col border-r border-border bg-sidebar text-sidebar-foreground md:flex">
       {/* Brand Header */}
       <div className="flex h-16 items-center px-6 border-b border-border">
-        <Link href="/dashboard" className="flex items-center space-x-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-indigo-500 to-emerald-500 p-1 shadow-md shadow-indigo-500/20">
-            <span className="text-sm font-bold text-white">FV</span>
-          </div>
+        <Link href="/" className="flex items-center space-x-2">
+          <Image src="/logo.png" alt="FinVault" width={32} height={32} className="rounded-lg" />
           <span className="text-lg font-bold text-foreground font-orbitron tracking-wide">FinVault</span>
         </Link>
       </div>
@@ -98,7 +97,7 @@ export default function Sidebar() {
             </div>
           </div>
           <button
-            onClick={() => signOut({ callbackUrl: "/login" })}
+            onClick={() => signOut({ callbackUrl: "/" })}
             className="rounded p-1 hover:bg-sidebar-accent hover:text-rose-400 transition-colors"
             title="Log Out"
           >
