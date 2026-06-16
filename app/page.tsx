@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Shield, TrendingUp, Cpu, PieChart } from "lucide-react";
 import { auth } from "@/lib/auth";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export default async function Home() {
   const session = await auth();
@@ -21,7 +20,6 @@ export default async function Home() {
           <span className="text-lg font-bold text-slate-900 dark:text-white font-orbitron tracking-wide">FinVault</span>
         </Link>
         <div className="flex items-center space-x-4">
-          <ThemeToggle />
           {session?.user ? (
             <>
               {/* <Link href="/dashboard" className="text-sm font-semibold text-slate-400 hover:text-white transition-colors">

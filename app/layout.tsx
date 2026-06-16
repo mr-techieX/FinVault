@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { headers } from "next/headers";
 import "./globals.css";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -59,6 +60,9 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <div className="fixed bottom-4 right-4 z-50">
+            <ThemeToggle />
+          </div>
           <Toaster richColors position="top-right" />
         </ThemeProvider>
       </body>
