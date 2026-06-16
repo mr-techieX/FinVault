@@ -22,6 +22,18 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: "/login",
     error: "/login",
   },
+  debug: true,
+  logger: {
+    error(code, ...message) {
+      console.error("[NEXTAUTH_ERROR]", code, ...message);
+    },
+    warn(code, ...message) {
+      console.warn("[NEXTAUTH_WARN]", code, ...message);
+    },
+    debug(code, ...message) {
+      console.log("[NEXTAUTH_DEBUG]", code, ...message);
+    },
+  },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -78,32 +90,47 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return session;
     },
-    async signIn({ user, account }) {
-      // Allow OAuth without email verification
-      if (account?.provider !== "credentials") {
-        // Create profile if first OAuth login and user already exists in DB
-        if (user.id) {
-          const dbUser = await db.user.findUnique({
-            where: { id: user.id },
-          });
-          if (dbUser) {
-            const profile = await db.userProfile.findUnique({
-              where: { userId: user.id },
+    async signIn({ user, account, profile }) {
+      console.log("[SIGNIN_CALLBACK] Provider:", account?.provider);
+      console.log("[SIGNIN_CALLBACK] User:", JSON.stringify({ id: user.id, email: user.email, name: user.name }));
+      console.log("[SIGNIN_CALLBACK] Account:", JSON.stringify(account));
+      console.log("[SIGNIN_CALLBACK] Profile email_verified:", (profile as Record<string, unknown>)?.email_verified);
+
+      try {
+        // Allow OAuth without email verification
+        if (account?.provider !== "credentials") {
+          // Create profile if first OAuth login and user already exists in DB
+          if (user.id) {
+            const dbUser = await db.user.findUnique({
+              where: { id: user.id },
             });
-            if (!profile) {
-              await db.userProfile.create({
-                data: { userId: user.id },
+            console.log("[SIGNIN_CALLBACK] dbUser found:", !!dbUser);
+            if (dbUser) {
+              const profile = await db.userProfile.findUnique({
+                where: { userId: user.id },
               });
+              if (!profile) {
+                await db.userProfile.create({
+                  data: { userId: user.id },
+                });
+                console.log("[SIGNIN_CALLBACK] Created profile for user:", user.id);
+              }
             }
           }
+          console.log("[SIGNIN_CALLBACK] Returning true for OAuth");
+          return true;
         }
+        console.log("[SIGNIN_CALLBACK] Returning true for credentials");
         return true;
+      } catch (error) {
+        console.error("[SIGNIN_CALLBACK] ERROR:", error);
+        return true; // Still allow sign-in even if profile creation fails
       }
-      return true;
     },
   },
   events: {
     async createUser({ user }) {
+      console.log("[EVENT_CREATE_USER] Creating profile for:", user.id);
       // Create default profile for new users
       if (user.id) {
         await db.userProfile.upsert({
