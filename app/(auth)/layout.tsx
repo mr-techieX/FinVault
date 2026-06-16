@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AuthLayout({
   children,
@@ -15,10 +16,12 @@ export default function AuthLayout({
       <div className="relative z-10 w-full max-w-md p-4">
         {/* Logo and Brand Header */}
         <div className="mb-8 flex flex-col items-center justify-center space-y-2 text-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-tr from-indigo-500 to-emerald-500 p-2 shadow-lg shadow-indigo-500/30">
-            <span className="text-2xl font-bold tracking-wider text-white">FV</span>
-          </div>
-          <h2 className="text-2xl font-bold tracking-tight text-white font-orbitron">FinVault</h2>
+          <Link href="/" className="flex flex-col items-center justify-center space-y-2 group">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl shadow-lg shadow-indigo-500/30 overflow-hidden transition-transform group-hover:scale-105">
+              <Image src="/logo.svg" alt="FinVault Logo" width={48} height={48} />
+            </div>
+            <h2 className="text-2xl font-bold tracking-tight text-white font-orbitron group-hover:text-indigo-400 transition-colors">FinVault</h2>
+          </Link>
           <p className="text-sm text-slate-400">Personal Finance & Net Worth Platform</p>
         </div>
 
