@@ -3,12 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Shield, TrendingUp, Cpu, PieChart } from "lucide-react";
 import { auth } from "@/lib/auth";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export default async function Home() {
   const session = await auth();
 
   return (
-    <div className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-slate-950 text-slate-100 font-sans antialiased">
+    <div className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased">
       {/* Glow backgrounds */}
       <div className="absolute top-[-20%] left-[-10%] h-[600px] w-[600px] rounded-full bg-indigo-500/10 blur-[130px]" />
       <div className="absolute bottom-[-10%] right-[-10%] h-[600px] w-[600px] rounded-full bg-emerald-500/10 blur-[130px]" />
@@ -17,9 +18,10 @@ export default async function Home() {
       <header className="relative z-10 mx-auto max-w-7xl w-full px-6 py-6 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
           <Image src="/logo.svg" alt="FinVault" width={36} height={36} className="rounded-lg" />
-          <span className="text-lg font-bold text-white font-orbitron tracking-wide">FinVault</span>
+          <span className="text-lg font-bold text-slate-900 dark:text-white font-orbitron tracking-wide">FinVault</span>
         </Link>
         <div className="flex items-center space-x-4">
+          <ThemeToggle />
           {session?.user ? (
             <>
               {/* <Link href="/dashboard" className="text-sm font-semibold text-slate-400 hover:text-white transition-colors">
